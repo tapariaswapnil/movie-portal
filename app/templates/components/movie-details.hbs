@@ -1,0 +1,37 @@
+<div class="poster">
+  <img src={{this.movie.poster}} alt="Poster for {{this.movie.title}}"z>
+</div>
+<div class="details">
+  <div>
+    <span class="badge {{bgClass}}">{{this.movie.type}}</span>
+  </div>
+  <h3 class="title">
+    <span class="position font-normal">{{position}}.</span> {{this.movie.title}}
+    <span class="text-muted font-normal">({{this.yearString}})</span>
+  </h3>
+  <div class="censor-runtime-genre">
+    {{this.movie.rated}} <span class="ghost">|</span> {{this.movie.runtime}} <span class="ghost">|</span>
+    {{this.movie.genre}}
+  </div>
+  <div class="rating">
+    <i class="icon-yellow fa fa-star"></i> <strong>{{this.movie.imdbRating}}</strong>
+    {{#if this.movie.metascore}}
+      <span class="mt-score">
+        <span class="badge bg-yellow">{{this.movie.metascore}}</span>
+        <span class="text-muted">Metascore</span>
+      </span>
+    {{/if}}
+  </div>
+  <div class="plot text-muted">
+    {{this.movie.plot}}
+  </div>
+  <div class="small text-muted">
+    Director: {{this.movie.director}}
+  </div>
+  {{#if this.authenticated.successful}}
+    <div class="movie-actions">
+      <a role="button" {{action "delete"}}><i class="fa fa-trash-alt" /></a>
+      <LinkTo @route="movie.edit" @model={{this.movie}}><i class="fa fa-edit" /></LinkTo>
+    </div>
+  {{/if}}
+</div>

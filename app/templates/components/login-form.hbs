@@ -1,0 +1,5 @@
+<form class="login-form">
+  <InputField @type="text" @label="Username" @value={{this.username}} />
+  <InputField @type="password" @label="Password" @value={{this.password}} />
+  <button class="btn" {{action "validateLogin"}}>Login</button>
+</form>

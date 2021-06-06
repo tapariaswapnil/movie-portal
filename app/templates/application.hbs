@@ -1,5 +1,34 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+<nav>
+  <div class="container">
+    {{#if this.showInputField}}
+      <InputField @placeholder="Search by movie name or director" class="search-input" @value={{this.searchQuery}} />
+      <select onchange={{action (mut this.search.selectedGenre) value="target.value"}} name="genre" id="genre">
+        <option value="All">All</option>
+        {{#each this.search.genres as |genre|}}
+          <option selected={{eq genre this.search.selectedGenre}} value={{genre}}>{{genre}}</option>
+        {{/each}}
+      </select>
+    {{/if}}
+    {{#if this.showMoviesButton}}
+      <LinkTo @route="movies" class="link">Movies</LinkTo>
+    {{/if}}
+    {{#if this.loggedIn}}
+      {{#if showAddMovieButton}}
+        <LinkTo @route="add" class="link">Add Movie</LinkTo>
+      {{/if}}
+      <div>
+        <button class="btn" {{action "logOut"}}>Logout</button>
+        <span class="avatar">
+          <span>A</span>
+        </span>
+      </div>
+    {{else}}
+      {{#if this.showLogInButton}}
+        <LinkTo @route="login" class="btn">Login</LinkTo>
+      {{/if}}
+    {{/if}}
+  </div>
+</nav>
+<div class="main container">
+  {{outlet}}
+</div>

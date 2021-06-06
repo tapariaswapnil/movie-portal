@@ -1,0 +1,12 @@
+<InputField @label="Title" @value={{this.movie.title}} @disabled={{this.editMovie}} />
+<InputField @label="Type" @value={{this.movie.type}} />
+<InputField @label="year" @value={{this.movie.year}} />
+<InputField @label="rated" @value={{this.movie.rated}} />
+<InputField @label="released" @value={{this.movie.released}} />
+<InputField @label="runtime" @value={{this.movie.runtime}} />
+<InputField @label="director" @value={{this.movie.director}} />
+<InputField @label="writer" @value={{this.movie.writer}} />
+<label class="input-label">Plot</label>
+<Textarea rows="5" @value={{this.movie.plot}} />
+<InputField @label="Genre(s)" @value={{this.movie.genre}} />
+<button class="btn" {{action "takeAction"}}>{{this.buttonLabel}}</button>

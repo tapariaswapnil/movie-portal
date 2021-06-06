@@ -1,0 +1,13 @@
+{{#if this.searchedMovies}}
+  <div class="movie-list">
+    {{#each this.searchedMovies as |movie index|}}
+      <MovieDetails
+        @loggedIn={{this.loggedIn}}
+        @position={{plus-one index}}
+        @movie={{movie}}
+        @deleteMovie={{action "deleteMovie"}} />
+    {{/each}}
+  </div>
+{{else}}
+  <div class="no-movie">NO MOVIES TO SHOW</div>
+{{/if}}
